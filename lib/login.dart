@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'styles.dart';
+import 'home.dart';
 
 class MainLogin extends StatelessWidget {
   const MainLogin({super.key});
@@ -35,12 +36,18 @@ class MainLogin extends StatelessWidget {
                 userInputPassword = value;
               },
               decoration: LoginStyles.textinputpassword,
+              obscureText: true,
               ),
 
             // кнопка авторизации
             ElevatedButton(
               onPressed: () {
                 print("$userInputLogin - $userInputPassword");
+                // Переход на домашний экран при нажатии на кнопку
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
+                );
               },
               style: LoginStyles.buttonStyle,
               child: const Text('Войти'),
