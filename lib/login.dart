@@ -2,17 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'styles.dart';
-import 'home.dart';
+import 'account.dart';
 
 class MainLogin extends StatelessWidget {
   const MainLogin({super.key});
-
 
   @override
   Widget build(BuildContext context) {
 
     String userInputLogin = '';
     String userInputPassword = '';
+    List listUsers = ["admin-admin", "user-1234"];
 
     return Scaffold(
       // основное тело
@@ -41,13 +41,32 @@ class MainLogin extends StatelessWidget {
 
             // кнопка авторизации
             ElevatedButton(
+              // при нажатии проверить строку и перейти
               onPressed: () {
-                print("$userInputLogin - $userInputPassword");
-                // Переход на домашний экран при нажатии на кнопку
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SecondScreen()),
-                );
+                if (listUsers.contains("$userInputLogin-$userInputPassword")){
+                  // Переход на домашний экран при нажатии на кнопку
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondScreen()),
+                  );
+                } else{
+                  // иначе показать диалоговое окно
+                  showDialog(context: context, builder: (BuildContext context){
+                    return AlertDialog(
+                      title: Text('Неверный логин или пароль. Попробуйте снова!'),
+                      actions: [
+                        FloatingActionButton(
+                          backgroundColor: Colors.black,
+                          child: Text('Ok'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  });
+                }
+
               },
               style: LoginStyles.buttonStyle,
               child: const Text('Войти'),
