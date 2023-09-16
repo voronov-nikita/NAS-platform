@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'styles.dart';
 import 'account.dart';
+import 'home.dart';
+
 
 class MainLogin extends StatelessWidget {
   const MainLogin({super.key});
@@ -75,7 +77,11 @@ class MainLogin extends StatelessWidget {
             // кнока входа для гостя
             ElevatedButton(
               onPressed: () {
-                print("гость");
+                // Переход на домашний экран при нажатии на кнопку
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
               },
               style: LoginStyles.buttonStyle,
               child: const Text('Войти как гость'),
