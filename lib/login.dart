@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, constant_identifier_names, prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'MyDataBase.dart';
 import 'styles.dart';
 import 'account.dart';
 import 'home.dart';
@@ -68,9 +69,12 @@ class MainLogin extends StatelessWidget {
                     // иначе показать диалоговое окно
                     showDialog(context: context, builder: (BuildContext context){
                       return AlertDialog(
+                        // отображаемый текст
                         title: Text('Неверный логин или пароль. Попробуйте снова!'),
                         actions: [
+                          // конка "OK", которая закрывает диалоговое окно
                           FloatingActionButton(
+                            // цвет кнопки
                             backgroundColor: Colors.black,
                             child: Text('Ok'),
                             onPressed: () {
