@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, constant_identifier_names, prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: avoid_print, constant_identifier_names, prefer_const_constructors, avoid_unnecessary_containers, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'MyDataBase.dart';
@@ -15,7 +15,7 @@ class MainLogin extends StatelessWidget {
 
     String userInputLogin = '';
     String userInputPassword = '';
-    List listUsers = ["admin-admin", "user-1234"];
+    DatabaseHelper databaseHelper = DatabaseHelper();
 
     return Scaffold(
       // основное тело
@@ -58,8 +58,8 @@ class MainLogin extends StatelessWidget {
               // кнопка авторизации
               ElevatedButton(
                 // при нажатии проверить строку и перейти
-                onPressed: () {
-                  if (listUsers.contains("$userInputLogin-$userInputPassword")){
+                onPressed: () async{
+                  if (await databaseHelper.verifyUser(userInputLogin, userInputPassword)){
                     // Переход на домашний экран при нажатии на кнопку
                     Navigator.push(
                       context,
@@ -110,7 +110,6 @@ class MainLogin extends StatelessWidget {
     );
   }
 }
-
 
 
 
