@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'styles.dart';
-import 'account.dart';
 import 'home.dart';
 
 

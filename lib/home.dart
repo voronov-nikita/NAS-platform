@@ -53,7 +53,7 @@ class MarkdownEditor extends StatefulWidget {
 class _MarkdownEditorState extends State<MarkdownEditor> {
   final TextEditingController _markdownController = TextEditingController();
   String _markdownText = '';
-  String _filePath = '../saves';
+  String _filePath = '';
 
   @override
   void initState() {
@@ -79,7 +79,7 @@ class _MarkdownEditorState extends State<MarkdownEditor> {
   Future<void> _saveMarkdownToFile() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
-      final file = File('/${directory.path}/new.md');
+      final file = File('${directory.path}/new.md');
       await file.writeAsString(_markdownText);
       setState(() {
         _filePath = file.path;
