@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'styles.dart';
-import 'home.dart';
 
 
 class MainLogin extends StatelessWidget {
@@ -58,11 +57,7 @@ class MainLogin extends StatelessWidget {
                 // при нажатии проверить строку и перейти
                 onPressed: (){
                   if (listUsers.contains('$userInputLogin-$userInputPassword')){
-                    // Переход на домашний экран при нажатии на кнопку
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                    
                   } else{
                     // иначе показать диалоговое окно
                     showDialog(context: context, builder: (BuildContext context){
@@ -93,10 +88,10 @@ class MainLogin extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Переход на домашний экран при нажатии на кнопку
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   // MaterialPageRoute(builder: (context) => HomePage()),
+                    // );
                 },
                 style: LoginStyles.buttonStyle,
                 child: const Text('Войти как гость'),
