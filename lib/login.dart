@@ -3,9 +3,19 @@
 import 'package:flutter/material.dart';
 import 'styles.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+
 
 class MainLogin extends StatelessWidget {
   const MainLogin({super.key});
+
+  void initDataBase() async{
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +23,7 @@ class MainLogin extends StatelessWidget {
     String userInputLogin = '';
     String userInputPassword = '';
     List listUsers = ['edit-edit', 'user-1234', 'admin-admin'];
+    initDataBase();
 
     return Scaffold(
       // основное тело
